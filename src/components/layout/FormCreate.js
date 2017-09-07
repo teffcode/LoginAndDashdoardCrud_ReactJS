@@ -17,7 +17,7 @@ const formItemLayout = {
       },
     };
 
-const FormCreate = ({ setFieldValue, onChange }) => (
+const FormCreate = ({ setFieldValue, onChangeUsername, onChangeDescription, isDisabled, options, value, onChangeRadio, defaultValue }) => (
 
     <Form layout="vertical">
     
@@ -25,27 +25,29 @@ const FormCreate = ({ setFieldValue, onChange }) => (
             <Input 
                 type="text" 
                 setFieldValue={setFieldValue} 
-                onChange={onChange} 
+                onChange={onChangeUsername} 
             />  
         </FormItem>
 
         <FormItem label="User Type" {...formItemLayout}>
-            <RadioGroup>
-            <Radio value="a">Local</Radio>
-            <Radio value="b">LDAP</Radio>
-            </RadioGroup>
+            <RadioGroup 
+                options={options}
+                defaultValue={value} 
+                onChange={onChangeRadio}
+                defaultValue={defaultValue}
+            />
         </FormItem>
 
         <FormItem label="Password" {...formItemLayout}>
-            <Input/>
+            <Input disabled={isDisabled}/>
         </FormItem>
 
         <FormItem label="Confirm Password" {...formItemLayout}>
-            <Input/>
+            <Input disabled={isDisabled}/>
         </FormItem>
 
         <FormItem label="Description" {...formItemLayout}>
-            <Input.TextArea/>
+            <Input.TextArea onChange={onChangeDescription} />
         </FormItem>
 
     </Form>

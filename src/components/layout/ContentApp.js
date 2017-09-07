@@ -10,15 +10,23 @@ import ContentPermissions from './permissions/ContentPermissions';
 
 const { Content } = Layout;
 
+const options = [
+  { label: 'Local', value: 'Local' },
+  { label: 'LDAP', value: 'LDAP' },
+];
+
 class ContentApp extends Component{
 
     constructor(props){
         super(props)
         this.state = {
             isVisible: false,
+            isDisabled: false,
             users: [],
             username: '',
-            password: ''
+            description: '',
+            value1: 'Local',
+            value2: 'LDAP'
         }
     }
 
@@ -28,10 +36,33 @@ class ContentApp extends Component{
         });
     }
 
-    handleChange = (event) => {
+    handleChangeUsername = (event) => {
         this.setState({
             username: event.target.value
         });
+    }
+
+    handleChangeDesciption = (event) => {
+        this.setState({
+            description: event.target.value
+        });
+    }
+
+    onChangeRadio = (event) => {
+        this.setState({
+            value1: event.target.value,
+            value2: event.target.value
+        })
+        console.log(this.state.value1)
+        if(this.state.value1 === "Local"){
+            this.setState({
+                isDisabled: true
+            })
+        } else if(this.state.value1 === "LDAP"){
+            this.setState({
+                isDisabled: false
+            })
+        }
     }
 
     handleCreate = (event) => {
@@ -42,7 +73,8 @@ class ContentApp extends Component{
         event.preventDefault()
         
         axios.post('http://192.168.27.17:9734/sgapi/restservices/users', {
-            username: this.state.username
+            username: this.state.username,
+            description: this.state.description
         })
         .then(res => {
             console.log(res.data)
@@ -81,7 +113,13 @@ class ContentApp extends Component{
                         handleCancel={ this.handleCancel }
                         data={ this.state.users }
                         setFieldValue={this.state.username}
-                        onChange={this.handleChange}
+                        onChangeUsername={this.handleChangeUsername}
+                        onChangeDescription={this.handleChangeDesciption}
+                        isDisabled={this.state.isDisabled}
+                        options={options}
+                        onChangeRadio={this.onChangeRadio}
+                        value1={this.state.value1}
+                        defaultValue={this.state.value1}
                     />
         } if (currentView === "roles") {
             return <ContentRoles/>

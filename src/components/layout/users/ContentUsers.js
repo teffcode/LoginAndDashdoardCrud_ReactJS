@@ -9,7 +9,7 @@ import FormCreate from '../FormCreate';
 import 'antd/dist/antd.css';
 import './ContentUsers.css';
 
-const ContentUsers = ({ showModal, isVisible, handleCancel, handleCreate, data, setFieldValue, onChange }) => (
+const ContentUsers = ({ showModal, isVisible, handleCancel, handleCreate, data, setFieldValue, onChangeUsername, onChangeDescription, isDisabled, options, value, onChangeRadio, defaultValue }) => (
 
     <div>
         <CardView 
@@ -29,14 +29,16 @@ const ContentUsers = ({ showModal, isVisible, handleCancel, handleCreate, data, 
                     >
                         <FormCreate
                             setFieldValue={setFieldValue}
-                            onChange={onChange}
+                            onChangeUsername={onChangeUsername}
+                            onChangeDescription={onChangeDescription}
+                            isDisabled={isDisabled}
+                            options={options}
+                            value={value}
+                            onChangeRadio={onChangeRadio}
+                            defaultValue={defaultValue}
                         />
                     </Modal>
-                    <TableUsers 
-                        data={data} 
-                    >
-                        <div>Hola</div>
-                    </TableUsers>
+                    <TableUsers data={data}/>
                 </div>
             }
         />   
