@@ -1,0 +1,27 @@
+.login-form {
+  width: 300px;
+  padding-top: 30px;
+  margin: 0 auto;
+}
+.login-form-forgot {
+  float: right;
+}
+.login-form-button {
+  width: 100%;
+  height: 43px;
+  background-color: #48D1CC;
+}
+
+.buttonPrincipal{
+    cursor: pointer;
+    padding-top: 30px;
+}
+
+.form{
+    padding-left: 440px;
+    padding-top: 150px;
+}
+
+.segmentContainer{
+    width: 400px;
+}
