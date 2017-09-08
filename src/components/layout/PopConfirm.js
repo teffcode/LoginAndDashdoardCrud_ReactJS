@@ -1,5 +1,7 @@
 import React from 'react';
-import { Popconfirm, message } from 'antd';
+import { Popconfirm, message, Button } from 'antd';
+
+import ButtonDelete from './ButtonDelete';
 
 import 'antd/dist/antd.css';
 
@@ -13,16 +15,19 @@ function cancel(e) {
   message.error('Click on No');
 }
 
-const PopConfirm = ({ handleClick, toggleCollapsed }) => (
+const PopConfirm = ({ children }) => (
+  <div style={{ marginLeft: 70, whiteSpace: 'nowrap' }}>
     <Popconfirm 
+      placement="top"
       title="Are you sure delete this task?" 
       onConfirm={confirm} 
       onCancel={cancel} 
       okText="Yes" 
       cancelText="No"
     >
-      <a href="#">Delete</a>
+      {children}
     </Popconfirm>
+  </div>
 );
 
 export default PopConfirm;

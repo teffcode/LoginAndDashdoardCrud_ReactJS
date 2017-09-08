@@ -107,11 +107,13 @@ class ContentApp extends Component{
             return <ContentDashboard/>
         } if (currentView === "users") {
             return <ContentUsers 
+                        /* Button create */
                         showModal={ this.showModal } 
+                        /* Modal */
                         isVisible={ this.state.isVisible } 
                         handleCreate={ this.handleCreate }
                         handleCancel={ this.handleCancel }
-                        data={ this.state.users }
+                        /* FormCreate */
                         setFieldValue={this.state.username}
                         onChangeUsername={this.handleChangeUsername}
                         onChangeDescription={this.handleChangeDesciption}
@@ -120,6 +122,8 @@ class ContentApp extends Component{
                         onChangeRadio={this.onChangeRadio}
                         value1={this.state.value1}
                         defaultValue={this.state.value1}
+                        /* TableUsers */
+                        data={ this.state.users }
                     />
         } if (currentView === "roles") {
             return <ContentRoles/>

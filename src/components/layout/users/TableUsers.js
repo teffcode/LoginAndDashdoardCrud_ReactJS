@@ -2,17 +2,19 @@ import React from 'react';
 import { Table } from 'antd';
 
 import PopConfirm from '../PopConfirm';
+import ViewMoreUsers from './ViewMoreUsers';
 
 import 'antd/dist/antd.css';
 
 const columns = [
-  { title: 'Username', dataIndex: 'username', width: 300 },
-  { title: 'Description', dataIndex: 'description', width: 400 },
+  { title: 'Username', dataIndex: 'username', width: 450 },
+  { title: 'Description', dataIndex: 'description', width: 450 },
   {
     title: 'Actions',
+    colSpan: 2,
     dataIndex: '',
-    key: 'x',
-    render: () => <PopConfirm/>
+    width: 200,
+    render: () => <ViewMoreUsers/>
   },
 ];
 
